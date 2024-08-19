@@ -4,6 +4,8 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { groceryReducer } from './store/reducers/grocery.reducer';
+import { bucketReducer } from './store/reducers/bucket.reducer';
 
 
 export const appConfig: ApplicationConfig = {
@@ -11,7 +13,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideStore(),
+    provideStore({
+      groceries: groceryReducer,
+      myBucket:bucketReducer
+    }),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
@@ -23,4 +28,5 @@ export const appConfig: ApplicationConfig = {
   
  
   ]
+
 };

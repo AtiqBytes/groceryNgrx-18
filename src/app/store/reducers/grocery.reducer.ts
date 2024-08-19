@@ -1,3 +1,4 @@
+import { createReducer } from "@ngrx/store";
 import { Grocery } from "../../../models/grocery.model";
 
 const initialState:Grocery[]=[
@@ -8,3 +9,6 @@ const initialState:Grocery[]=[
 ]
 
 
+export const groceryReducer = createReducer(initialState);
+  
+  
